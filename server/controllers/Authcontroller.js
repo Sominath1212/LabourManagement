@@ -4,14 +4,47 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const register = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const {
+      name,
+      username,
+      email,
+      password,
+      role,
+      profession,
+      hourlyRate,
+      address,
+      dob,
+      mobileNo,
+      gender,
+      upi,
+      socialmediaHandles,
+      experience,
+      image,
+    } = req.body;
+    console.log(req.body);
     const user = await UserModel.findOne({ email });
     if (user) {
       return res
         .status(409)
         .json({ message: "user is already present", success: false });
     }
-    const userModel = new UserModel({ name, email, password });
+    const userModel = new UserModel({
+      name,
+      username,
+      email,
+      password,
+      role,
+      profession,
+      hourlyRate,
+      address,
+      dob,
+      mobileNo,
+      gender,
+      upi,
+      socialmediaHandles,
+      experience,
+      image,
+    });
     userModel.password = await bcrypt.hash(password, 10);
     await userModel.save();
     res.status(200).json({ message: "Register Successfully" });
@@ -19,8 +52,6 @@ const register = async (req, res) => {
     res.status(500).json({ message: "uanble to register" });
   }
 };
-
-
 
 const login = async (req, res) => {
   try {
@@ -42,11 +73,18 @@ const login = async (req, res) => {
       { expiresIn: "24h" }
     );
 
-    res
-      .status(200)
-      .json({ message: "login Successfully", success: true, jwttoken,"email":email,"user":user.name});
+    res.status(200).json({
+      message: "Login Successful",
+      success: true,
+      jwttoken,
+      user: {
+        email: user.email,
+        name: user.name,
+        id: user._id,
+      },
+    });
   } catch (error) {
-    res.status(500).json({ message: "uanble to register" });
+    res.status(500).json({ message: "uanble to login" });
   }
 };
 
