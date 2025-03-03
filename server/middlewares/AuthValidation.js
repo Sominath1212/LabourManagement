@@ -17,6 +17,7 @@ const registerValidation = (req, res, next) => {
       .optional(),
     gender: Joi.string().valid("male", "female", "other").optional(),
     upi: Joi.string().allow("").optional(),
+    description: Joi.string().optional(),
     socialmediaHandles: Joi.string().optional(),
     experience: Joi.string().min(0).optional(),
     image: Joi.string().optional(),

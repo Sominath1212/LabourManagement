@@ -54,6 +54,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  description:{
+    type:String
+  },
   experience: {
     type: String,
     required: true,

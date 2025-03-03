@@ -21,7 +21,7 @@ const gigSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-  gigCover: {
+  cover: {
     type: String,
    
   },
@@ -43,10 +43,7 @@ const gigSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
   },
-  deliveryTime: {
-    type: Date,
-    required: true,
-  },
+  
   status: {
     type: String,
     enum: ["new", "inprocess", "completed"],

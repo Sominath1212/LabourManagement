@@ -41,6 +41,7 @@ const register = async (req, res) => {
       mobileNo,
       gender,
       upi,
+      description,
       socialmediaHandles,
       experience,
       image,
