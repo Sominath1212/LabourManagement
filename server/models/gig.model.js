@@ -11,9 +11,8 @@ const gigSchema = new mongoose.Schema({
     required: true,
    
   },
-  provider: {
+  providerid: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
     required: true,
   },
   price: {
@@ -23,7 +22,6 @@ const gigSchema = new mongoose.Schema({
   },
   cover: {
     type: String,
-   
   },
   category: {
     type: String,
@@ -40,14 +38,17 @@ const gigSchema = new mongoose.Schema({
     required: true,
     lowercase: true,
   },
-  createdAt: {
+  compitionDate: {
     type: Date,
-  },
-  
+    required: true,
+  }, 
   status: {
     type: String,
     enum: ["new", "inprocess", "completed"],
     default: "new",
+  },
+  createdAt: {
+    type: Date,
   },
 });
 

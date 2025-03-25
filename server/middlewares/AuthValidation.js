@@ -6,7 +6,7 @@ const registerValidation = (req, res, next) => {
     username: Joi.string().min(4).max(30).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(4).max(30).required(),
-    role: Joi.string().valid("seller", "buyer").required(),
+    role: Joi.valid("provider", "consumer", null).required(),
     profession: Joi.string().allow("").optional(),
     hourlyRate: Joi.string().min(0).optional(),
     address: Joi.string().allow("").optional(),
@@ -16,10 +16,10 @@ const registerValidation = (req, res, next) => {
       .message("Mobile number must be exactly 10 digits")
       .optional(),
     gender: Joi.string().valid("male", "female", "other").optional(),
-    upi: Joi.string().allow("").optional(),
+    upi: Joi.allow("").optional(),
     description: Joi.string().optional(),
     socialmediaHandles: Joi.string().optional(),
-    experience: Joi.string().min(0).optional(),
+    experience: Joi.optional(),
     image: Joi.string().optional(),
   });
 

@@ -17,11 +17,12 @@ const register = async (req, res) => {
       mobileNo,
       gender,
       upi,
+      description,
       socialmediaHandles,
       experience,
       image,
     } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     const user = await UserModel.findOne({ email });
     if (user) {
       return res
@@ -50,6 +51,8 @@ const register = async (req, res) => {
     await userModel.save();
     res.status(200).json({ message: "Register Successfully" });
   } catch (error) {
+    console.log(error);
+
     res.status(500).json({ message: "uanble to register" });
   }
 };
@@ -78,18 +81,23 @@ const login = async (req, res) => {
       message: "Login Successful",
       success: true,
       jwttoken,
-      user: {
-        email: user.email,
-        name: user.name,
-        id: user._id,
-      },
+      user: user,
     });
   } catch (error) {
     res.status(500).json({ message: "uanble to login" });
   }
 };
 
+ const getUsers = async (req, res) => {
+  try {
+    const users = await UserModel.find({});
+    res.status(200).json({ users });
+  } catch (error) {
+    res.status(500).json({ message: "uanble to get user" });
+  }
+};
 module.exports = {
   login,
+  getUsers,
   register,
 };

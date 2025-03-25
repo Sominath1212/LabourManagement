@@ -6,5 +6,5 @@ mongoose
     console.log("mongo connected.....✅");
   })
   .catch((err) => {
-    console.log("mongo connection error....❌");
+    console.log("mongo connection error....❌",err);
   });

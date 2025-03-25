@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema({
   },
   hourlyRate: {
     type: Number,
-    required: true,
   },
   address: {
     type: String,
@@ -48,18 +47,14 @@ const userSchema = new mongoose.Schema({
   },
   upi: {
     type: String,
-    required: true,
   },
   socialmediaHandles: {
     type: String,
     required: true,
   },
-  description:{
-    type:String
-  },
+  description: { type: String, required: false },
   experience: {
     type: String,
-    required: true,
   },
   image: {
     type: String,

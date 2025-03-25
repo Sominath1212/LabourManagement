@@ -11,6 +11,6 @@ const router = require("express").Router();
 router.post("/create-gig", createGig);
 router.post("/edit-gig", editGig);
 router.post("/delete-gig", deleteGig);
-router.post("/all-gig", allGigs);
+router.get("/all-gigs", allGigs);
 
 module.exports = router;
